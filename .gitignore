@@ -14,5 +14,3 @@ yarn.lock
 *.pyc
 
 .rpt2_cache/
-
-__pycache*
