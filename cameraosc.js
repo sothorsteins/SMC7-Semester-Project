@@ -80,11 +80,11 @@ async function loadVideo() {
 }
 
 const guiState = {
-  algorithm: 'multi-pose',
+  algorithm: 'single-pose',
   input: {
     mobileNetArchitecture: isMobile() ? '0.50' : '0.75',
     outputStride: 16,
-    imageScaleFactor: 0.5,
+    imageScaleFactor: 0.24,
   },
   singlePoseDetection: {
     minPoseConfidence: 0.1,
@@ -267,10 +267,10 @@ function detectPoseInRealTime(video, net) {
     // and draw the resulting skeleton and keypoints if over certain confidence
     // scores
 
-    for (let i = 0; i < poses.length; i++) 
+    for (let i = 0; i < poses.length; i++)
     {
       const pose = poses[i];
-      if (pose.score >= minPoseConfidence) 
+      if (pose.score >= minPoseConfidence)
       {
          if (guiState.output.showPoints) {
           drawKeypoints(pose.keypoints, minPartConfidence, ctx);
@@ -284,7 +284,7 @@ function detectPoseInRealTime(video, net) {
 
 
         var message = new OSC.Message('/pose/' + i);
-        for (let j = 0; j < pose.keypoints.length; j++) 
+        for (let j = 0; j < pose.keypoints.length; j++)
         {
           const keypoint = pose.keypoints[j];
 
@@ -293,7 +293,7 @@ function detectPoseInRealTime(video, net) {
           }
 
           const {y, x} = keypoint.position;
-          
+
           message.add (keypoint.part);
           message.add (x);
           message.add (y);
@@ -316,12 +316,12 @@ function detectPoseInRealTime(video, net) {
 
 
     //     var message = new OSC.Message('/pose');
-    //     for (let j = 0; j < keypoints.length; j++) 
+    //     for (let j = 0; j < keypoints.length; j++)
     //     {
     //       const keypoint = keypoints[j];
 
     //       const {y, x} = keypoint.position;
-          
+
     //       message.add (keypoint.part);
     //       message.add (x);
     //       message.add (y);
