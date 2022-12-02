@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 1612.0, 845.0 ],
+		"rect" : [ 59.0, 106.0, 1106.0, 748.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -12396,7 +12396,6 @@
 									"annotation_name" : "Unmap",
 									"appearance" : 2,
 									"fontsize" : 9.0,
-									"hidden" : 1,
 									"id" : "obj-28",
 									"maxclass" : "live.text",
 									"mode" : 0,
@@ -12457,8 +12456,8 @@
 									"focusbordercolor" : [ 0.980392156862745, 0.63921568627451, 0.16078431372549, 1.0 ],
 									"id" : "obj-14",
 									"inactivelcdcolor" : [ 0.098039215686275, 0.098039215686275, 0.098039215686275, 1.0 ],
-									"lcdbgcolor" : [ 0.125490196078431, 0.133333333333333, 0.145098039215686, 1.0 ],
-									"lcdcolor" : [ 0.447058823529412, 0.541176470588235, 0.850980392156863, 1.0 ],
+									"lcdbgcolor" : [ 0.447058823529412, 0.541176470588235, 0.850980392156863, 1.0 ],
+									"lcdcolor" : [ 0.125490196078431, 0.133333333333333, 0.145098039215686, 1.0 ],
 									"maxclass" : "live.text",
 									"numinlets" : 1,
 									"numoutlets" : 2,
@@ -12528,10 +12527,10 @@
 
 									}
 ,
-									"text" : "Map",
+									"text" : "LFO Rate",
 									"textcolor" : [ 1.0, 0.709804, 0.196078, 1.0 ],
 									"textoffcolor" : [ 1.0, 0.709804, 0.196078, 1.0 ],
-									"texton" : "Map",
+									"texton" : "LFO Rate",
 									"varname" : "live.text"
 								}
 
@@ -28163,8 +28162,17 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-139", 2 ],
+					"order" : 1,
+					"source" : [ "obj-67", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
 					"midpoints" : [ 233.065656565656752, 943.356435537338257, 293.782828282828405, 943.356435537338257, 293.782828282828405, 810.995047271251678, 350.5, 810.995047271251678 ],
+					"order" : 0,
 					"source" : [ "obj-67", 0 ]
 				}
 
@@ -28438,7 +28446,7 @@
 		"dependency_cache" : [ 			{
 				"name" : "gratify-2.wav",
 				"bootpath" : "~/Downloads/media",
-				"patcherrelativepath" : "./media",
+				"patcherrelativepath" : "../../../../../../Downloads/media",
 				"type" : "WAVE",
 				"implicit" : 1
 			}
