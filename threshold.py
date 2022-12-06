@@ -27,7 +27,7 @@ class OSC:
   current_time  = None
   prev_angle    = None
   prev_time     = None
-  vel_MA_length = 60
+  vel_MA_length = 60 # determines how fast velocity changes
   vel_MA_vector = np.zeros((1, vel_MA_length))
   vel_MA_result = 0
   vel_max       = 50
@@ -56,7 +56,7 @@ class OSC:
 
 
   """
-  Calculate and send moving average of angular velocity 
+  Calculate and send moving average of angular velocity
   NOTE: angle = shoulder / wrist
   """
   def calculate_vel_MA(self):
