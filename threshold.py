@@ -27,11 +27,11 @@ class OSC:
   current_time  = None
   prev_angle    = None
   prev_time     = None
-  vel_MA_length = 60
+  vel_MA_length = 80
   vel_MA_vector = np.zeros((1, vel_MA_length))
   vel_MA_result = 0
-  vel_max       = 50
-  vel_min       = 45
+  vel_max       = 45
+  vel_min       = 30
 
   # udp sender
   sender = udp_client.SimpleUDPClient(send_ip, send_port)
