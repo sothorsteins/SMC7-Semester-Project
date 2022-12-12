@@ -1,4 +1,3 @@
-import socket
 from datetime import datetime
 
 import numpy as np
@@ -17,7 +16,7 @@ class OSC:
 
   # Threshold variables
   low_bool = False
-  target = 90
+  target = 45
   low_thres_offset = 45
   low_thresh = target - low_thres_offset
 
@@ -27,15 +26,14 @@ class OSC:
   current_time  = None
   prev_angle    = None
   prev_time     = None
-<<<<<<< HEAD
   vel_MA_length = 80
-=======
-  vel_MA_length = 60 # determines how fast velocity changes
->>>>>>> 4333a5ef9dbfbfe05ffc3575737fea443da18bc1
   vel_MA_vector = np.zeros((1, vel_MA_length))
   vel_MA_result = 0
-  vel_max       = 45
-  vel_min       = 30
+  vel_max       = 35
+  vel_min       = 20
+
+  # Downward error multiplier
+  downward_error_multi = 1.4
 
   # udp sender
   sender = udp_client.SimpleUDPClient(send_ip, send_port)
@@ -129,6 +127,17 @@ class OSC:
 
 
   """
+  Returns how much punishment should be added. The downward error
+  multiplier determines how much more downward error will exergarated
+  """
+  def calculate_error(self, address, error):
+    multiplier = 1 if error > 0 else self.downward_error_multi
+    value = abs(multiplier * error) / self.downward_error_multi
+    self.sender.send_message("/error", value)
+    self.verbose_print(f"multiplier: {multiplier}, error: {value}")
+
+
+  """
   Set up server
   """
   def listen(self, ip, port):
@@ -136,6 +145,7 @@ class OSC:
     disp = dispatcher.Dispatcher()
     disp.map("/angle", self.set_angle)
     disp.map("/target", self.set_target)
+    disp.map("/error", self.calculate_error)
     disp.map("/test", print)
 
     # server to listen
